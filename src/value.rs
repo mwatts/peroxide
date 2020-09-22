@@ -131,7 +131,7 @@ impl heap::Inventory for Value {
             }
             Value::SyntacticClosure(sc) => {
                 v.push(sc.expr);
-                v.push(sc.closed_env.borrow().clone());
+                v.push(*sc.closed_env.borrow());
             }
             Value::Port(p) => p.inventory(v),
             Value::Continuation(c) => c.inventory(v),
